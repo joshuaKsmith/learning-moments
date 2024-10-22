@@ -1,0 +1,31 @@
+Table posts {
+    id int [pk]
+    title varchar
+    body varchar
+    date date
+    userId int
+    topicId int 
+}
+
+Table users {
+    id int [pk]
+    name varchar
+    email varchar
+    cohort varchar
+}
+
+Table topics {
+    id int [pk]
+    name varchar
+}
+
+Table likes {
+    id int [pk]
+    postId int
+    userId int
+}
+
+ref: users.id < posts.userId
+ref: users.id < likes.userId
+ref: posts.id < likes.postId
+ref: topics.id < posts.topicId
