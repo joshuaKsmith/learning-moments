@@ -36,14 +36,6 @@ export const AllPosts = () => {
         }
     }, [selectedTopicId, allPosts, searchTerm])
 
-    // useEffect(() => {
-    //     const foundPosts = allPosts.filter((post) =>
-    //         post.title.toLowerCase().includes(searchTerm.toLowerCase())
-    //     )
-    //     setFilteredPosts(foundPosts)
-    // }, [searchTerm, allPosts])
-
-
     return (
         <div className="all-posts">
             <PostFilterBar allTopics={allTopics} setSelectedTopicId={setSelectedTopicId} setSearchTerm={setSearchTerm} />
