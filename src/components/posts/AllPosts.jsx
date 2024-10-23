@@ -24,21 +24,24 @@ export const AllPosts = () => {
 
     useEffect(() => {
         if (parseInt(selectedTopicId)) {
-            const selectedPosts = allPosts.filter(
-                (post) => post.topicId === parseInt(selectedTopicId)
+            const selectedPosts = allPosts.filter((post) => 
+                post.topicId === parseInt(selectedTopicId) && post.title.toLowerCase().includes(searchTerm.toLowerCase())
             )
             setFilteredPosts(selectedPosts)
         } else {
-            setFilteredPosts(allPosts)
+            const selectedPosts = allPosts.filter((post) => 
+                post.title.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            setFilteredPosts(selectedPosts)
         }
-    }, [selectedTopicId, allPosts])
+    }, [selectedTopicId, allPosts, searchTerm])
 
     // useEffect(() => {
-    //     const foundPosts = posts.filter((post) => 
+    //     const foundPosts = allPosts.filter((post) =>
     //         post.title.toLowerCase().includes(searchTerm.toLowerCase())
     //     )
-    //     set
-    // })
+    //     setFilteredPosts(foundPosts)
+    // }, [searchTerm, allPosts])
 
 
     return (
