@@ -40,5 +40,9 @@
 }
 
 .likes-counter {
+    display:flex;
+    flex-direction: column;
     flex-basis:25%;
+    justify-content: space-evenly;
+    align-items: center;
 }

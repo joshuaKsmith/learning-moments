@@ -16,7 +16,7 @@ export const Post = ({ post }) => {
             <div className="likes-counter">
                 <div className="likes-counter-header"># of Likes:</div>
                 <div className="likes-counter-display">
-                    
+                    0
                 </div>
             </div>
         </div>
