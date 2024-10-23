@@ -1,0 +1,28 @@
+.nav-bar {
+    display:flex;
+    justify-content: space-evenly;
+    margin: 20px;
+
+}
+
+.all-posts-nav,
+.my-posts-nav,
+.favorites-nav,
+.new-post-nav,
+.profile-nav,
+.logout-nav {
+    display:flex;
+    flex-basis:16.6%;
+    justify-content: center;
+    align-items: center;
+}
+
+.all-posts-nav-btn,
+.my-posts-nav-btn,
+.favorites-nav-btn,
+.new-post-nav-btn,
+.profile-nav-btn,
+.logout-nav-btn {
+    width:80%;
+
+}

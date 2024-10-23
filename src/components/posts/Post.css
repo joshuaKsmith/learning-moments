@@ -1,0 +1,44 @@
+.post {
+    display:flex;
+    flex-basis:47%;
+    border: 3px solid green;
+    border-radius: 10px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.post-info {
+    display:flex;
+    flex-direction:column;
+    flex-basis:75%;
+}
+
+.post-title {
+    margin-bottom:8px;
+}
+
+.post-title-header {
+    padding-left: 20px;
+    margin-bottom: 3px;
+}
+
+.post-title-name {
+    font-weight: bold;
+}
+
+
+.post-topic-header {
+    padding-left: 20px;
+    margin-bottom: 3px;
+    font-size: 80%;
+}
+
+.post-topic-name {
+    font-weight: bold;
+    font-size: 80%;
+    padding-left: 30px;
+}
+
+.likes-counter {
+    flex-basis:25%;
+}
