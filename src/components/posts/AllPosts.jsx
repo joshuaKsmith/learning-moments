@@ -4,6 +4,7 @@ import { getAllPosts } from "../../services/PostService.jsx"
 import { getAllTopics } from "../../services/TopicService.jsx"
 import { Post } from "./Post.jsx"
 import { PostFilterBar } from "./PostFilterBar.jsx"
+import { getLikeByPostId } from "../../services/LikeService.jsx"
 
 
 export const AllPosts = () => {

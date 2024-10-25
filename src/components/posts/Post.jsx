@@ -1,6 +1,16 @@
+import { useEffect, useState } from "react"
 import "./Post.css"
+import { getLikesByPostId } from "../../services/LikeService"
 
 export const Post = ({ post }) => {
+    const [likes, setLikes] = useState([])
+
+    useEffect(() => {
+        getLikesByPostId(post.id).then((likesArray) => {
+            setLikes(likesArray)
+        })
+    }, [])
+    
     return (
         <div className="post">
             <div className="post-info">
@@ -16,7 +26,7 @@ export const Post = ({ post }) => {
             <div className="likes-counter">
                 <div className="likes-counter-header"># of Likes:</div>
                 <div className="likes-counter-display">
-                    0
+                    {likes.length}
                 </div>
             </div>
         </div>
