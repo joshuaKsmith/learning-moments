@@ -1,20 +1,45 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPostById } from "../../services/PostService"
+import { toggleLikeOrUnlike } from "../../services/LikeService"
 
 
 export const PostDetails = ({ currentUser }) => {
     const [post, setPost] = useState({})
     const { postId } = useParams()
+    const [currentUserLikesThisPost, setCurrentUserLikesThisPost] = useState(false)
 
-    useEffect(() => {
+    const resetPost = () => {
         getPostById(postId).then((data) => {
             const postObject = data[0]
             if (postObject) {
                 setPost(postObject)
             }
         })
+    }
+
+    useEffect(() => {
+        resetPost()
     }, [postId])
+
+    useEffect(() => {
+        const foundLike = post.likes?.find((like) => parseInt(like.userId) === parseInt(currentUser.id))
+        if (foundLike) {
+            setCurrentUserLikesThisPost(true)
+        }
+    }, [post])
+
+    const handleLikeToggle = () => {
+        if (!currentUserLikesThisPost) {
+            const newLike = {
+                "postId": post.id,
+                "userId": currentUser.id
+            }
+            toggleLikeOrUnlike(newLike).then(() => {
+                resetPost()
+            })
+        }
+    }
 
     return (
         <section className="post">
@@ -52,8 +77,11 @@ export const PostDetails = ({ currentUser }) => {
                     {parseInt(currentUser.id) !== parseInt(post.userId) ? (
                         <button
                             className="btn btn-like"
+                            onClick={() => {
+                                handleLikeToggle()
+                            }}
                         >
-                            Like
+                            {currentUserLikesThisPost ? "Unlike" : "Like"}
                         </button>
                     ) : ("")}
                 </div>
