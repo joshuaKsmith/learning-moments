@@ -4,7 +4,7 @@ import { getAllPosts } from "../../services/PostService.jsx"
 import { getAllTopics } from "../../services/TopicService.jsx"
 import { Post } from "./Post.jsx"
 import { PostFilterBar } from "./PostFilterBar.jsx"
-import { getLikeByPostId } from "../../services/LikeService.jsx"
+import { Link } from "react-router-dom"
 
 
 export const AllPosts = () => {
@@ -43,7 +43,13 @@ export const AllPosts = () => {
             <div className="posts">
                 {filteredPosts.map((postObject) => {
                     return (
-                        <Post post={postObject} key={postObject.id}/>
+                        <Link to={`/posts/${postObject.id}`} key={postObject.id}>
+                            <Post 
+                                post={postObject}
+                                key={postObject.id}
+                            />
+                        </Link>
+
                     )
                 })}
             </div>
