@@ -5,6 +5,7 @@ export const PostFilterBar = ({ allTopics, setSelectedTopicId, setSearchTerm }) 
         <div className="filter-bar">
             <select 
                 className="topic-select"
+                name="topic-select"
                 onChange={(event) => {
                     setSelectedTopicId(event.target.value)
                 }}
