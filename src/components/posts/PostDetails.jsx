@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPostById } from "../../services/PostService"
-import { toggleLikeOrUnlike } from "../../services/LikeService"
+import { addLikeEntry, removeLikeEntryById } from "../../services/LikeService"
 
 
 export const PostDetails = ({ currentUser }) => {
     const [post, setPost] = useState({})
     const { postId } = useParams()
     const [currentUserLikesThisPost, setCurrentUserLikesThisPost] = useState(false)
+    const [foundLike, setFoundLike] = useState({})
 
     const resetPost = () => {
         getPostById(postId).then((data) => {
@@ -26,6 +27,9 @@ export const PostDetails = ({ currentUser }) => {
         const foundLike = post.likes?.find((like) => parseInt(like.userId) === parseInt(currentUser.id))
         if (foundLike) {
             setCurrentUserLikesThisPost(true)
+            setFoundLike(foundLike)
+        } else {
+            setCurrentUserLikesThisPost(false)
         }
     }, [post])
 
@@ -35,7 +39,11 @@ export const PostDetails = ({ currentUser }) => {
                 "postId": post.id,
                 "userId": currentUser.id
             }
-            toggleLikeOrUnlike(newLike).then(() => {
+            addLikeEntry(newLike).then(() => {
+                resetPost()
+            })
+        } else {
+            removeLikeEntryById(foundLike.id).then(() => {
                 resetPost()
             })
         }
