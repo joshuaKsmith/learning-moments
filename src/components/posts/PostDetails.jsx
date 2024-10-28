@@ -56,21 +56,22 @@ export const PostDetails = ({ currentUser }) => {
                 {post.title}
             </header>
             <div className="post-author">
+                <div className="post-author-label">By : </div>
                 {post.user?.name}
             </div>
-            <div>
-                <span className="post-info">Topic : </span>
+            <div className="post-details-info">
+                <div className="post-details-info-label">Topic : </div>
                 {post.topic?.name}
             </div>
-            <div>
-                <span className="post-info">Date : </span>
+            <div className="post-details-info">
+                <div className="post-details-info-label">Date : </div>
                 {post.date}
             </div>
             <div className="post-body">
                 {post.body}
             </div>
-            <div>
-                <span className="post-info"> # of Likes : </span>
+            <div className="post-details-info">
+                <div className="post-details-info-label"> # of Likes : </div>
                 {post.likes?.length}
             </div>
             <footer className="post-footer">
