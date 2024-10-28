@@ -21,7 +21,7 @@ export const MyPosts = ({ currentUser }) => {
 
     useEffect(() => {
         handleReset()
-    }, [myPosts])
+    }, [currentUser])
 
     return (
         <div className="my-posts">
