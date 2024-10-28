@@ -4,7 +4,8 @@
 }
 
 .new-post-topic {
-    margin: 10px 30px;
+    margin-left: 60px;
+    margin-top: 30px;
     max-width: 30%;
     padding-left: 10px;
 }
@@ -13,6 +14,7 @@
     border: solid blue;
     padding: 10px;
     border-radius: 20px;
+    margin: 20px;
 }
 
 .new-post-title {
@@ -29,6 +31,6 @@
 }
 
 .new-post-btn {
-    margin: 10px 30px;
+    margin: 10px 50px;
     max-width: 30%;
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { getPostById } from "../../services/PostService"
 import { addLikeEntry, removeLikeEntryById } from "../../services/LikeService"
+import "./PostDetails.css"
 
 
 export const PostDetails = ({ currentUser }) => {
@@ -51,7 +52,7 @@ export const PostDetails = ({ currentUser }) => {
 
     return (
         <section className="post">
-            <header className="post-header">
+            <header className="post-detail-header">
                 {post.title}
             </header>
             <div className="post-author">

@@ -1,0 +1,8 @@
+.post-detail-header {
+    border: dotted 2px blue;
+}
+
+.post {
+    display:flex;
+    flex-direction: column;
+}
