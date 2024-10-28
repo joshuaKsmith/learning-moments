@@ -8,10 +8,10 @@
 }
 
 .navbar-item {
-    flex-basis: 20%;
+    flex-basis: 16%;
     list-style-type: none;
     text-align: center;
-    color: var(--offWhite);
+    color: red;
 }
 
 .navbar-link {

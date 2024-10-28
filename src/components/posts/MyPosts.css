@@ -1,0 +1,23 @@
+.my-posts {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.my-post {
+    display:flex;
+    flex-basis:45%;
+    border: 3px solid green;
+    border-radius: 10px;
+    margin: 2px;
+    padding: 5px;
+}
+
+.my-post-title {
+    display:flex;
+    flex-basis: 80%;
+}
+
+.my-post-delete {
+    display:flex;
+    flex-basis:20%;
+}

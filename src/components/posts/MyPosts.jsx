@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { deletePostById, getPostsByUserId } from "../../services/PostService"
 import { Link } from "react-router-dom"
+import "./MyPosts.css"
 
 
 export const MyPosts = ({ currentUser }) => {
@@ -20,7 +21,7 @@ export const MyPosts = ({ currentUser }) => {
 
     useEffect(() => {
         handleReset()
-    }, [])
+    }, [myPosts])
 
     return (
         <div className="my-posts">
@@ -38,6 +39,7 @@ export const MyPosts = ({ currentUser }) => {
                             value={postObject.id}
                             onClick={(event) => {
                                 handlePostDeletion(parseInt(event.target.value))
+
                             }}
                         >
                             Delete

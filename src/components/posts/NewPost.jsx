@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
 import { getAllTopics } from "../../services/TopicService"
 import { storeNewPostSubmission } from "../../services/PostService"
-
+import { useNavigate } from "react-router-dom"
+import "./NewPost.css"
 
 export const NewPost = ({ currentUser }) => {
     const [allTopics, setAllTopics] = useState([])
     const [selectedTopicId, setSelectedTopicId] = useState(0)
     const [titleEntry, setTitleEntry] = useState("")
     const [bodyEntry, setBodyEntry] = useState("")
+
+    const navigate = useNavigate()
 
     useEffect(() => {
         getAllTopics().then((topicArray) => {
@@ -24,7 +27,7 @@ export const NewPost = ({ currentUser }) => {
             "userId": currentUser.id
         }
         storeNewPostSubmission(newPost).then(() => {
-
+            navigate("/posts/my_posts")
         })
     }
 
@@ -44,27 +47,29 @@ export const NewPost = ({ currentUser }) => {
                     )
                 })}
             </select>
-            <div className="new-post-title">
-                <span className="new-post-title-label">New Post Title : </span>
-                <input
-                    className="new-post-title-field"
-                    name="new-post-title-field"
-                    type="text"
-                    onChange={(event) => {
-                        setTitleEntry(event.target.value)
-                    }}
-                />
-            </div>
-            <div className="new-post-body">
-                <div className="new-post-body-label">New Post Body : </div>
-                <input
-                    className="new-post-body-field"
-                    name="new-post-body-field"
-                    type="text"
-                    onChange={(event) => {
-                        setBodyEntry(event.target.value)
-                    }}
-                />
+            <div className="new-post-panel">
+                <div className="new-post-title">
+                    <span className="new-post-title-label">New Post Title : </span>
+                    <input
+                        className="new-post-title-field"
+                        name="new-post-title-field"
+                        type="text"
+                        onChange={(event) => {
+                            setTitleEntry(event.target.value)
+                        }}
+                    />
+                </div>
+                <div className="new-post-body">
+                    <div className="new-post-body-label">New Post Body : </div>
+                    <input
+                        className="new-post-body-field"
+                        name="new-post-body-field"
+                        type="text"
+                        onChange={(event) => {
+                            setBodyEntry(event.target.value)
+                        }}
+                    />
+                </div>
             </div>
             <button 
                 className="new-post-btn"
