@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useNavigate, useParams } from "react-router-dom"
+import { Link, useNavigate, useParams } from "react-router-dom"
 import { getPostById } from "../../services/PostService"
 import { addLikeEntry, removeLikeEntryById } from "../../services/LikeService"
 import "./PostDetails.css"
@@ -43,7 +43,7 @@ export const PostDetails = ({ currentUser }) => {
                 "userId": currentUser.id
             }
             addLikeEntry(newLike).then(() => {
-                resetPost()
+                navigate("../favorites")
             })
         } else {
             removeLikeEntryById(foundLike.id).then(() => {
@@ -57,10 +57,12 @@ export const PostDetails = ({ currentUser }) => {
             <header className="post-detail-header">
                 {post.title}
             </header>
-            <div className="post-author">
-                <div className="post-author-label">By : </div>
-                {post.user?.name}
-            </div>
+            <Link to={`/users/${post.userId}`} >
+                <div className="post-author">
+                    <div className="post-author-label">By : </div>
+                    {post.user?.name}
+                </div>
+            </Link>
             <div className="post-details-info">
                 <div className="post-details-info-label">Topic : </div>
                 {post.topic?.name}
