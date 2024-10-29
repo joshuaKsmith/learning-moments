@@ -39,7 +39,6 @@ export const MyPosts = ({ currentUser }) => {
                             value={postObject.id}
                             onClick={(event) => {
                                 handlePostDeletion(parseInt(event.target.value))
-
                             }}
                         >
                             Delete

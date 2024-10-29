@@ -20,3 +20,7 @@ export const removeLikeEntryById = (id) => {
         }
     })
 }
+
+export const getLikesByUserId = (userId) => {
+    return fetch(`http://localhost:8088/likes?userId=${userId}&_expand=post`).then((res) => res.json())
+}
