@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { getPostById } from "../../services/PostService"
 import { addLikeEntry, removeLikeEntryById } from "../../services/LikeService"
 import "./PostDetails.css"
@@ -10,6 +10,8 @@ export const PostDetails = ({ currentUser }) => {
     const { postId } = useParams()
     const [currentUserLikesThisPost, setCurrentUserLikesThisPost] = useState(false)
     const [foundLike, setFoundLike] = useState({})
+
+    const navigate = useNavigate()
 
     const resetPost = () => {
         getPostById(postId).then((data) => {
@@ -79,6 +81,9 @@ export const PostDetails = ({ currentUser }) => {
                     {parseInt(currentUser.id) === parseInt(post.userId) ? (
                         <button
                             className="btn btn-edit"
+                            onClick={() => {
+                                navigate("edit")
+                            }}
                         >
                             Edit
                         </button>
